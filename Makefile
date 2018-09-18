@@ -136,7 +136,7 @@ explaintest: server
 
 gotest: parserlib
 	go get github.com/etcd-io/gofail
-        go get github.com/2tvenom/go-test-teamcity
+	go get github.com/2tvenom/go-test-teamcity
 	@$(GOFAIL_ENABLE)
 ifeq ("$(TRAVIS_COVERAGE)", "1")
 	@echo "Running in TRAVIS_COVERAGE mode."
