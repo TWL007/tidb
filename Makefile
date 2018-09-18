@@ -136,6 +136,7 @@ explaintest: server
 
 gotest: parserlib
 	go get github.com/etcd-io/gofail
+        go get github.com/2tvenom/go-test-teamcity
 	@$(GOFAIL_ENABLE)
 ifeq ("$(TRAVIS_COVERAGE)", "1")
 	@echo "Running in TRAVIS_COVERAGE mode."
@@ -147,7 +148,7 @@ ifeq ("$(TRAVIS_COVERAGE)", "1")
 else
 	@echo "Running in native mode."
 	@export log_level=error; \
-	$(GOTEST) -ldflags '$(TEST_LDFLAGS)' -cover $(PACKAGES) || { $(GOFAIL_DISABLE); exit 1; }
+	$(GOTEST) -ldflags '$(TEST_LDFLAGS)' -cover $(PACKAGES) || { $(GOFAIL_DISABLE); exit 1; } | go-test-teamcity
 endif
 	@$(GOFAIL_DISABLE)
 
