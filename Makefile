@@ -148,7 +148,7 @@ ifeq ("$(TRAVIS_COVERAGE)", "1")
 else
 	@echo "Running in native mode."
 	@export log_level=error; \
-	($(GOTEST) -v -ldflags '$(TEST_LDFLAGS)' -cover $(PACKAGES) || { $(GOFAIL_DISABLE); exit 1; )} | gotest-to-teamcity
+	($(GOTEST) -v -ldflags '$(TEST_LDFLAGS)' -cover $(PACKAGES) || { $(GOFAIL_DISABLE); exit 1; }) | gotest-to-teamcity
 endif
 	@$(GOFAIL_DISABLE)
 
